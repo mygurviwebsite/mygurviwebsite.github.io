@@ -1,0 +1,27 @@
+extends ../_layouts/category
+
+block config
+  //- Correct base url pathing for this page
+  - var baseUrl = '../'
+
+include ../_modules/menu/menu
+
+block menu
+  +menu('art')(class='menu')
+
+block title
+  h1 Art
+
+block description
+  p.subtext.
+    Art has been a passion of mine since childhood, but I discontinued pursuing it because it was not considered worthwhile compared to an engineering degree. In recent years, I started to explore the space of art again. Instead of focusing on the craft of traditional art forms like I did before, I’m more interested in modern and contemporary art ideas and trying out different mediums.
+
+block category-content
+  .category-content.clearfix
+    each project in site.data.art
+      div.project
+        a(href= project.link)
+          img(src= project.thumbnail, class='project-thumbnail')
+        h3.project-name
+          a(href= project.link)= project.name
+        label.project-label= project.label

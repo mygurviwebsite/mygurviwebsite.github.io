@@ -1,0 +1,26 @@
+extends ../_layouts/category
+
+block config
+  //- Correct base url pathing for this page
+  - var baseUrl = '../'
+
+include ../_modules/menu/menu
+
+block menu
+  +menu('writing')(class='menu')
+
+block title
+  h1 Writing
+
+block description
+  p.subtext.
+    Writing Chinese essays used to be my most annoying headache at school. Practicing English writing for studying abroad was even more of a burden. However, later I found it extremely powerful to sort out my floating thoughts. Having realized that it could be worthwhile to share them with more people, I started to put more conscious efforts into it and publish my writings on Medium.
+
+block category-content
+  .category-content
+    each post in site.data.writings
+      div.post
+        h3
+          a(href= post.link, target= '_blank')= post.title
+        p.post-preview= post.preview
+        label.post-date= post.date

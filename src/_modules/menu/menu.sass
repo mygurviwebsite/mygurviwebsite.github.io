@@ -1,0 +1,136 @@
+// menu styles
+
+$height--menuButton: 24px
+$width--menuButton: 32px
+
+.menu-button
+  height: $height--menuButton
+  width: $width--menuButton
+  cursor: pointer
+  z-index: $zIndex--menuButton
+  transition: opacity .25s ease
+  position: relative
+  margin: 6px 0 // logo is 36px, to vertical align
+
+  &:hover
+    opacity: .7
+
+  &.active
+    .top
+      transform: translateY(10px) translateX(0) rotate(45deg)
+    .middle
+      opacity: 0
+    .bottom
+      transform: translateY(-10px) translateX(0) rotate(-45deg)
+
+  span
+    background-color: $color-primary
+    height: 3px
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+    transition: all .35s ease
+    cursor: pointer
+
+    &:nth-of-type(2)
+      top: 10px
+
+    &:nth-of-type(3)
+      top: 20px
+
+.menu-overlay
+  position: fixed
+  background-color: $color-light-bg
+  top: 0
+  left: 0
+  width: 100%
+  height: 0%
+  visibility: hidden
+  transition: opacity .3s, visibility .3s, height .3s
+  overflow: hidden
+
+  &.open
+    opacity: .95
+    visibility: visible
+    height: 100%
+    overflow-y: scroll
+
+    li
+      animation: fadeInRight .4s ease forwards
+      animation-delay: .3s
+
+      &:nth-of-type(2)
+        animation-delay: .35s
+
+      &:nth-of-type(3)
+        animation-delay: .4s
+
+      &:nth-of-type(4)
+        animation-delay: .45s
+
+      &:nth-of-type(5)
+        animation-delay: .5s
+
+      &:nth-of-type(6)
+        animation-delay: .55s
+
+    .menu-contact
+      animation: fadeIn .5s ease forwards
+      animation-delay: .6s
+
+  nav
+    margin-top: 2*$baseline
+    margin-bottom: $baseline
+
+  li
+    display: block
+    position: relative
+    opacity: 0
+
+    a
+      color: $color-grey-1
+      text-decoration: none
+      @include typeScale(1)
+      font-weight: $fontWeight-primary-bold
+      font-style: italic
+      transition: all .25s ease
+      display: inline-block
+      position: relative
+
+      &:hover, &.is-active
+        transform: translateX(1.5rem)
+        opacity: 1
+
+      &::after
+        content: ' '
+        height: .2em
+        width: 0
+        top: 50%
+        left: -1.5rem
+        position: absolute
+        background-color: $color-accent
+        transition: all .5s ease
+        z-index: $zIndex-negative
+
+      &:hover::after, &.is-active::after
+        width: calc(100% + 3rem)
+
+.menu-contact
+  display: inline-block
+  margin-right: $baseline
+  margin-bottom: $baseline
+  opacity: 0
+
+  a
+    font-weight: $fontWeight-primary-regular
+    color: $color-grey-1
+    color: $color-primary
+    margin-right: 0.5*$baseline
+    border-bottom: 1px $color-primary solid
+
+    &:hover
+      opacity: 1
+
+
+
